@@ -1,7 +1,7 @@
 <template>
-  <div class="footer">
-    <div>
-      <b-card>
+  <table class="footer">
+      <td>
+      <b-card class="ex">
           <b-card-text
             style="
               margin: 0;
@@ -14,11 +14,59 @@
           </b-card-text>
           <b-card-text style="color: gray; padding: 0">
             경기도 성남시 수정구
+            대표 구본성
+            이메일 test@test.com
           </b-card-text>
-          <b-button href="#" variant="primary">투자 신청(상세보기)</b-button>
+          <b-card-text style="color: gray; padding: 0">
+            경기도 성남시 중원구
+            대표 구본성
+            이메일 test@test.com
+          </b-card-text>
         </b-card>
-    </div>
-  </div>
+        </td>
+        <td>
+        <b-card class="ex">
+          <b-card-text
+            style="
+              margin: 0;
+              color: black;
+              font-size: auto;
+              max-font-size: 20pt;
+            "
+          >
+            NOTICE
+          </b-card-text>
+          <b-card-text style="color: gray; padding: 0">
+            대출금리 등등등
+          </b-card-text>
+          <b-card-text style="color: gray; padding: 0">
+            고객 센터
+          </b-card-text>
+        </b-card>
+        </td>
+        <td>
+        <b-card class="ex">
+          <b-card-text
+            style="
+              margin: 0;
+              color: black;
+              font-size: auto;
+              max-font-size: 20pt;
+            "
+          >
+            회사 이름
+          </b-card-text>
+          <b-card-text style="color: gray; padding: 0">
+            서비스 이용약관
+          </b-card-text>
+          
+          <div class="h2 mb-0">
+            <b-icon-instagram></b-icon-instagram>
+            <b-icon-arrow-up></b-icon-arrow-up>
+          </div>
+        </b-card>
+        </td>
+  </table>
 </template>
 
 <script>
@@ -27,8 +75,18 @@ export default {};
 
 <style>
 .footer {
-  float:left 33%;
-  position: absolute;
-  bottom: 0;
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  border-collapse: collapse;
+  background-color: navy;
+  
+}
+
+.ex {
+  background-color: navy;
+  margin: 30px;
+  max-width: 100%;
 }
 </style>
