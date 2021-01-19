@@ -1,9 +1,5 @@
 import axios from 'axios';
 
-var headers = {
-  'Content-Type': 'application/json',
-  "Access-Control-Allow-Origin": "*"
-}
 const config = {
   baseUrl: 'http://localhost:8080'
 }
@@ -18,11 +14,22 @@ function fetchUserInfo(username) {
 
 function setUser(user) {
   console.log(user);
-  return axios.post(`${config.baseUrl}/users`, user, { headers: headers });
+  return axios.post(`${config.baseUrl}/users`, user);
+}
+
+function checkUser(user){
+  console.log(user);
+  return axios.post(`${config.baseUrl}/login`, user);
+}
+
+function findProductAll(){
+  return axios.get(`${config.baseUrl}/investments`)
 }
 
 export {
   getData,
   fetchUserInfo,
-  setUser
+  setUser,
+  checkUser,
+  findProductAll,
 }

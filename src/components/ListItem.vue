@@ -19,8 +19,8 @@
               {{ item.user }}
             </router-link>
             <router-link v-else :to="`item.url`" class="list-text">
-              {{ item.domain }}</router-link
-            >
+              {{ item.domain }}
+              </router-link>
           </small>
         </div>
       </li>

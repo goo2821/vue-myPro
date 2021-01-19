@@ -10,13 +10,13 @@
 
 <script>
 import ToolBar from "./components/ToolBar.vue";
-import FooterBar from "./components/FooterBar.vue"
+import FooterBar from "./components/FooterBar.vue";
 
 export default {
   name: "App",
   components: {
     ToolBar,
-    FooterBar
+    FooterBar,
   },
 };
 </script>

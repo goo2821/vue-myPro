@@ -7,5 +7,11 @@ export default {
   },
   SET_USER(state, result) {
     state.result = result;
+  },
+  CHECK_USER(state, result){
+    state.result = result;
+  },
+  SET_PRODUCT_ALL(state, product){
+    state.product = product;
   }
 }

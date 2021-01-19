@@ -1,7 +1,7 @@
 <template>
   <table class="footer">
-      <td>
-      <b-card class="ex">
+      <td class="test">
+      <b-card class="ex" style="background-color: skyblue;border:0">
           <b-card-text
             style="
               margin: 0;
@@ -24,8 +24,9 @@
           </b-card-text>
         </b-card>
         </td>
+
         <td>
-        <b-card class="ex">
+        <b-card class="ex" style="background-color: skyblue;border:0">
           <b-card-text
             style="
               margin: 0;
@@ -44,8 +45,9 @@
           </b-card-text>
         </b-card>
         </td>
+
         <td>
-        <b-card class="ex">
+        <b-card class="ex" style="background-color: skyblue;border:0">
           <b-card-text
             style="
               margin: 0;
@@ -76,16 +78,12 @@ export default {};
 <style>
 .footer {
   table-layout: fixed;
-  height: 100%;
   width: 100%;
   padding: 0;
-  border-collapse: collapse;
-  background-color: navy;
-  
+  background-color: skyblue;
 }
 
 .ex {
-  background-color: navy;
   margin: 30px;
   max-width: 100%;
 }

@@ -9,7 +9,8 @@ const store = new Vuex.Store({
   state: {
     data: [],
     user: {},
-    result: {}
+    result: [],
+    product: [],
   },
   mutations,
   actions

@@ -2,7 +2,7 @@
   <div class="header">
     <div>
       <!-- type - 글자 색  variant - 배경색 -->
-  <b-navbar toggleable="lg" type="dark" variant="#288bff" style="background-color:chocolate">
+  <b-navbar toggleable="lg" style="background-color:skyblue">
     <b-navbar-brand><router-link to="/">위펀딩</router-link></b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -40,18 +40,12 @@
         <div class="loginHeader" slot="header">Create Account</div>
         <div slot="body">
           <div>
-            <input class="input1" type="text" v-model="id" placeholder="id" />
-            <input
-              class="input1"
-              type="password"
-              v-model="password"
-              placeholder="password"
-            />
+            <input class="input1" type="text" v-model="user.userId" placeholder="id" />
+            <input class="input1" type="password" v-model="user.userPassword" placeholder="password"/>
           </div>
           <div>
-            <button class="Btn1" style="font-size: 1px" @click="doSend">
-              로그인</button
-            ><br />
+            <button class="Btn1" style="font-size: 1px" @click="doLogin">
+              로그인</button><br />
             <button class="Btn1" style="font-size: 1px" @click="closeModal">
               나가기
             </button>
@@ -147,9 +141,10 @@ export default {
       this.modal2 = false;
     },
     doLogin() {
-      if (this.message.length > 0) {
-        alert(this.message);
-        this.message = "";
+      if (this.user.userId.length > 0) {
+        alert(
+          this.$store.dispatch("GET_LOGIN_RESULT", this.user) + this.user.userId
+        );
         this.closeModal();
       } else {
         alert("메시지를 입력해주세요.");
@@ -157,9 +152,9 @@ export default {
     },
     doSignUp() {
       if (this.user.userId.length > 0) {
-        alert(
-          this.$store.dispatch("GET_USER_RESULT", this.user) + this.user.userId
-        );
+        this.$store.dispatch("GET_USER_RESULT", this.user) + this.user.userId
+        
+        alert(this.$store.state.result);
 
         this.closeModal2();
       } else {
