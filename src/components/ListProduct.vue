@@ -21,7 +21,7 @@
     <h1 v-if="test === 'all'">전체 보기</h1>
     <h1 v-else-if="test === 'dev'">개발형 보기</h1>
     <h1 v-else-if="test === 'real'">실물형 보기</h1>
-    <div v-for="(pro, id) in this.$store.state.product" :key="id">
+    <div v-for="(pro, id) in this.$store.state.product.content" :key="id" style="display: block">
       <router-link
         to="/"
         style="
@@ -74,20 +74,27 @@
         </b-card>
       </router-link>
     </div>
+    <div class="overflow-auto" style="display:flex;align-items: center;justify-content: center;">
+      <div class="mt-3">
+        <h6 class="text-center">Center alignment</h6>
+        <b-pagination-nav :number-of-pages="this.$store.state.product.totalPages" base-url="/investments/" align="center"></b-pagination-nav>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return { test: "all" };
+    return { 
+      test: "all",
+    };
   },
   created() {
-    this.$store.dispatch("GET_PRODUCT_ALL");
+    this.$store.dispatch("GET_PRODUCT_ALL", this.$route.params.page - 1);
   },
   computed: {
     listProduct() {
-      console.log("list Product ) " + this.$store.state.product);
       return this.$store.state.product;
     },
   },
@@ -113,7 +120,7 @@ export default {
     },
     showReal() {
       this.test = "real";
-    },
+    }
   },
 };
 </script>

@@ -7,6 +7,7 @@ import Jobs from '../views/Jobs.vue';
 import Ask from '../views/Ask.vue';
 import User from '../views/User.vue';
 import Inverstments from '../views/Investments.vue'
+import Test from '../views/Test.vue'
 
 Vue.use(VueRouter);
 
@@ -38,8 +39,12 @@ const router = new VueRouter({
       component: User
     },
     {
-      path: '/investments',
+      path: '/investments/:page',
       component: Inverstments
+    },
+    {
+      path: '/test',
+      component: Test
     }
   ]
 })

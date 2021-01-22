@@ -9,7 +9,7 @@
 
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item><router-link to="/investments">투자하기</router-link></b-nav-item>
+        <b-nav-item><router-link to="/investments/1">투자하기</router-link></b-nav-item>
         <b-nav-item><router-link to="/jobs">WRC</router-link></b-nav-item>
         <b-nav-item><router-link to="/ask">회사소개</router-link></b-nav-item>
       </b-navbar-nav>

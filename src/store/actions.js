@@ -43,8 +43,8 @@ export default {
     })
   },
 
-  GET_PRODUCT_ALL({commit}){
-    findProductAll()
+  GET_PRODUCT_ALL({commit}, page){
+    findProductAll(page)
     .then(response => {
       commit('SET_PRODUCT_ALL', response.data);
     }).catch(error =>{

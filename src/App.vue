@@ -19,6 +19,7 @@ export default {
     FooterBar,
   },
 };
+
 </script>
 
 <style>

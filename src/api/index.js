@@ -19,13 +19,12 @@ function setUser(user) {
 
 function checkUser(user){
   console.log(user);
-  return axios.post(`${config.baseUrl}/login`, user);
+  return axios.post(`${config.baseUrl}/login`, user, {withCredentials: true});
 }
 
-function findProductAll(){
-  return axios.get(`${config.baseUrl}/investments`)
+function findProductAll(page){
+  return axios.get(`${config.baseUrl}/investments?page=${page}`);
 }
-
 export {
   getData,
   fetchUserInfo,
