@@ -4,6 +4,8 @@ const config = {
   baseUrl: 'http://localhost:8080'
 }
 
+axios.defaults.withCredentials = true;
+
 function getData(url) {
   return axios.get(config.baseUrl + url);
 }
@@ -19,7 +21,7 @@ function setUser(user) {
 
 function checkUser(user){
   console.log(user);
-  return axios.post(`${config.baseUrl}/login`, user, {withCredentials: true});
+  return axios.post(`${config.baseUrl}/login`, user);
 }
 
 function findProductAll(page){
