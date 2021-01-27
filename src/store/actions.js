@@ -1,4 +1,4 @@
-import { getData, fetchUserInfo, setUser, checkUser, findProductAll } from '../api/index.js'
+import { getData, fetchUserInfo, setUser, checkUser, findProductAll, findProductOne } from '../api/index.js'
 
 export default {
   GET_DATA(context, url) {
@@ -49,6 +49,15 @@ export default {
       commit('SET_PRODUCT_ALL', response.data);
     }).catch(error =>{
       console.log(error)
+    })
+  },
+
+  GET_PRODUCT_ONE({commit}, productId) {
+    findProductOne(productId)
+    .then(response => {
+      commit('SET_PRODUCT_ONE', response.data);
+    }).catch(error => {
+      console.log(error);
     })
   }
 

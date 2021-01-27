@@ -25,8 +25,8 @@ window.addEventListener("beforeunload", function(event){
   console.log("원래 것");
   event.returnValue="나와라 뚝딱";
 })
-*/
 window.onbeforeunload = function(e) {
   console.log("test");
   e.returnValue="test";
 }
+*/

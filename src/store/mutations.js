@@ -13,5 +13,8 @@ export default {
   },
   SET_PRODUCT_ALL(state, product){
     state.product = product;
+  },
+  SET_PRODUCT_ONE(state, product){
+    state.product = product;
   }
 }

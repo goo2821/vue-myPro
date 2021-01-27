@@ -18,66 +18,66 @@
         >실물형</b-button
       >
     </div>
-    <h1 v-if="test === 'all'">전체 보기</h1>
-    <h1 v-else-if="test === 'dev'">개발형 보기</h1>
-    <h1 v-else-if="test === 'real'">실물형 보기</h1>
-    <div v-for="(pro, id) in this.$store.state.product.content" :key="id" style="display: block">
-      <router-link
-        to="/"
-        style="
-          max-width: 25rem;
-          float: left;
-          width: 33%;
-          margin: 15px;
-          text-decoration: none;
-        "
-      >
-        <b-card
-          img-src="https://picsum.photos/60/30/?image=25"
-          img-alt="Image"
-          img-top
-          tag="article"
-          style="max-width: 30rem"
-          class="mb-2"
-        >
-          <h6>
-            <b-badge variant="primary" class="badg">Primary</b-badge>
-            <b-badge variant="primary" class="badg">Primary</b-badge>
-          </h6>
-          <b-card-text
-            style="
-              margin: 0;
-              color: black;
-              font-size: auto;
-              max-font-size: 20pt;
-            "
-          >
-            #{{ pro.id }} {{ pro.productName }}
-          </b-card-text>
-          <b-card-text style="color: gray; padding: 0">
-            <small>{{ pro.productAddress }}</small>
-          </b-card-text>
+    <b-container class="bv-example-row mb-3">
+      <b-row>
+        <div v-for="(pro, id) in this.$store.state.product.content" :key="id">
+          <b-col>
+            <router-link :to="`/details/${pro.id}`" style="margin: 15px; text-decoration: none">
+              <b-card
+                img-src="https://picsum.photos/60/30/?image=25"
+                img-alt="Image"
+                img-top
+                tag="article"
+                style="max-width: 30rem"
+                class="mb-2"
+              >
+                <h6>
+                  <b-badge variant="primary" class="badg">Primary</b-badge>
+                  <b-badge variant="primary" class="badg">Primary</b-badge>
+                </h6>
+                <b-card-text
+                  style="
+                    margin: 0;
+                    color: black;
+                    font-size: auto;
+                    max-font-size: 20pt;
+                  "
+                >
+                  #{{ pro.id }} {{ pro.productName }}
+                </b-card-text>
+                <b-card-text style="color: gray; padding: 0">
+                  <small>{{ pro.productAddress }}</small>
+                </b-card-text>
 
-          <!-- 투자 금액, 예상 수익률, 모집 금액 테이블 -->
-          <div>
-            <b-table :fields="fields(pro)" :items="items(pro)"> </b-table>
-          </div>
-          <b-progress :max="pro.totalMoney" class="goal">
-            <b-progress-bar
-              :value="pro.nowMoney"
-              :label="`${((pro.nowMoney / pro.totalMoney) * 100).toFixed(2)}%`"
-            ></b-progress-bar>
-          </b-progress>
-          <b-button href="#" variant="primary" class="BtnForm">
-            투자 신청(상세보기)
-          </b-button>
-        </b-card>
-      </router-link>
-    </div>
-    <div class="overflow-auto" style="display:flex;align-items: center;justify-content: center;">
+                <!-- 투자 금액, 예상 수익률, 모집 금액 테이블 -->
+                <div>
+                  <b-table :fields="fields(pro)" :items="items(pro)"> </b-table>
+                </div>
+                <b-progress :max="pro.totalMoney" class="goal">
+                  <b-progress-bar
+                    :value="pro.nowMoney"
+                    :label="`${((pro.nowMoney / pro.totalMoney) * 100).toFixed(2)}%`"
+                  ></b-progress-bar>
+                </b-progress>
+                <b-button href="#" variant="primary" class="BtnForm">
+                  투자 신청(상세보기)
+                </b-button>
+              </b-card>
+            </router-link>
+          </b-col>
+        </div>
+      </b-row>
+    </b-container>
+    <div
+      class="overflow-auto"
+      style="display: flex; align-items: center; justify-content: center"
+    >
       <div class="mt-3">
-        <h6 class="text-center">Center alignment</h6>
-        <b-pagination-nav :number-of-pages="this.$store.state.product.totalPages" base-url="/investments/" align="center"></b-pagination-nav>
+        <b-pagination-nav
+          :number-of-pages="this.$store.state.product.totalPages"
+          base-url="/investments/"
+          align="center"
+        ></b-pagination-nav>
       </div>
     </div>
   </div>
@@ -86,7 +86,7 @@
 <script>
 export default {
   data() {
-    return { 
+    return {
       test: "all",
     };
   },
@@ -120,7 +120,7 @@ export default {
     },
     showReal() {
       this.test = "real";
-    }
+    },
   },
 };
 </script>

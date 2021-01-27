@@ -8,6 +8,7 @@ import Ask from '../views/Ask.vue';
 import User from '../views/User.vue';
 import Inverstments from '../views/Investments.vue'
 import Test from '../views/Test.vue'
+import Detail from '../views/Details.vue'
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,10 @@ const router = new VueRouter({
     {
       path: '/test',
       component: Test
+    },
+    {
+      path: '/details/:productId',
+      component: Detail
     }
   ]
 })

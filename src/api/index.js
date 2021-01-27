@@ -27,10 +27,16 @@ function checkUser(user){
 function findProductAll(page){
   return axios.get(`${config.baseUrl}/investments?page=${page}`);
 }
+
+function findProductOne(productId){
+  return axios.get(`${config.baseUrl}/details/${productId}`);
+}
+
 export {
   getData,
   fetchUserInfo,
   setUser,
   checkUser,
   findProductAll,
+  findProductOne
 }
