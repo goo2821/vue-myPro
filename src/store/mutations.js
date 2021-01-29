@@ -16,5 +16,11 @@ export default {
   },
   SET_PRODUCT_ONE(state, product){
     state.product = product;
+  },
+  SET_PRODUCT_TYPE(state, product){
+    state.product = product;
+  },
+  SET_DETAIL(state, detail) {
+    state.detail = detail;
   }
 }

@@ -7,7 +7,7 @@
             src="https://picsum.photos/1000/700/?image=41"
             fluid
             alt="Responsive image"
-            style="min-width: 150px"
+            style="min-width: 300px"
           ></b-img>
         </b-col>
         <b-col>
@@ -21,7 +21,7 @@
             <h6 style="color: gray">{{ this.product.productAddress }}</h6>
           </div>
 
-          <b-table :fields="fields()" :items="items()"> </b-table>
+          <b-table :fields="fields()" :items="items()" style="text-align: center"> </b-table>
 
           <b-progress :max="this.product.totalMoney" class="goal">
             <b-progress-bar
@@ -45,20 +45,17 @@
         </b-col>
       </b-row>
     </b-container>
-    <div>
-      <b-tabs content-class="mt-3" align="center" style="margin-top:50px">
-        <b-tab title="First" active>
-          test 1234
-        </b-tab>
-        <b-tab title="Second"><p>I'm the second tab</p></b-tab>
-        <b-tab title="Second"><p>I'm the second tab</p></b-tab>
-      </b-tabs>
-    </div>
+    <sub-detail></sub-detail>
   </div>
 </template>
 
 <script>
+import subDetail from '../components/SubDetail.vue'
+
 export default {
+  components: {
+    subDetail,
+  },
   data() {
     return {
       product: [],

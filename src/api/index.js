@@ -28,8 +28,16 @@ function findProductAll(page){
   return axios.get(`${config.baseUrl}/investments?page=${page}`);
 }
 
+function findProductType(data){
+  return axios.get(`${config.baseUrl}/investments/${data.type}/?page=${data.page}`);
+}
+
 function findProductOne(productId){
-  return axios.get(`${config.baseUrl}/details/${productId}`);
+  return axios.post(`${config.baseUrl}/investments/${productId}`);
+}
+
+function findDetail(productId){
+  return axios.get(`${config.baseUrl}/details/${productId}`)
 }
 
 export {
@@ -38,5 +46,7 @@ export {
   setUser,
   checkUser,
   findProductAll,
-  findProductOne
+  findProductOne,
+  findProductType,
+  findDetail
 }

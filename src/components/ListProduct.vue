@@ -22,7 +22,10 @@
       <b-row>
         <div v-for="(pro, id) in this.$store.state.product.content" :key="id">
           <b-col>
-            <router-link :to="`/details/${pro.id}`" style="margin: 15px; text-decoration: none">
+            <router-link
+              :to="`/details/${pro.id}`"
+              style="margin: 15px; text-decoration: none"
+            >
               <b-card
                 img-src="https://picsum.photos/60/30/?image=25"
                 img-alt="Image"
@@ -31,10 +34,18 @@
                 style="max-width: 30rem"
                 class="mb-2"
               >
-                <h6>
-                  <b-badge variant="primary" class="badg">Primary</b-badge>
-                  <b-badge variant="primary" class="badg">Primary</b-badge>
-                </h6>
+                <div v-if="pro.type === 'pf'">
+                  <h6>
+                    <b-badge variant="primary" class="badg">Primary</b-badge>
+                    <b-badge variant="primary" class="badg">Primary</b-badge>
+                  </h6>
+                </div>
+                <div v-if="pro.type === 'sh'">
+                  <h6>
+                    <b-badge variant="success" class="badg">Primary</b-badge>
+                    <b-badge variant="success" class="badg">Primary</b-badge>
+                  </h6>
+                </div>
                 <b-card-text
                   style="
                     margin: 0;
@@ -56,7 +67,9 @@
                 <b-progress :max="pro.totalMoney" class="goal">
                   <b-progress-bar
                     :value="pro.nowMoney"
-                    :label="`${((pro.nowMoney / pro.totalMoney) * 100).toFixed(2)}%`"
+                    :label="`${((pro.nowMoney / pro.totalMoney) * 100).toFixed(
+                      2
+                    )}%`"
                   ></b-progress-bar>
                 </b-progress>
                 <b-button href="#" variant="primary" class="BtnForm">
@@ -112,15 +125,34 @@ export default {
         { [f[0]]: "모집 금액", [f[1]]: "예상 수익률", [f[2]]: "투자 기간" },
       ];
     },
+    getProduct() {
+      if (this.test === "all") {
+        this.$store.dispatch("GET_PRODUCT_ALL", this.$route.params.page - 1);
+      } else if (this.test === "dev") {
+        this.$store.dispatch("GET_PRODUCT_TYPE", {
+          page: this.$route.params.page - 1,
+          type: "pf",
+        });
+      } else {
+        this.$store.dispatch("GET_PRODUCT_TYPE", {
+          page: this.$route.params.page - 1,
+          type: "sh",
+        });
+      }
+    },
     showAll() {
       this.test = "all";
+      this.getProduct();
     },
     showDev() {
       this.test = "dev";
+      this.getProduct();
     },
     showReal() {
       this.test = "real";
+      this.getProduct();
     },
+    pageUp() {},
   },
 };
 </script>

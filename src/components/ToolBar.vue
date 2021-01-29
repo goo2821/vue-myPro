@@ -2,7 +2,7 @@
   <div class="header">
     <div>
       <!-- type - 글자 색  variant - 배경색 -->
-  <b-navbar toggleable="lg" style="background-color:dimgray">
+  <b-navbar toggleable="lg" style="background-color:dimgray;">
     <b-navbar-brand><router-link to="/">위펀딩</router-link></b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
