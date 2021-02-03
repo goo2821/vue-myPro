@@ -8,41 +8,51 @@
       <b-list-group-item>Vestibulum at eros</b-list-group-item>
     </b-list-group>
     <h3 style="text-align: center">
-      {{ this.time }}
+      {{ this.now }}
     </h3>
     <h3 style="text-align: center">
-      {{ this.oldTime }}
+      {{ this.endTime }}
     </h3>
     <h3 style="text-align: center">
-      {{ this.restTime }}
+      {{ this.remainingTime }}
     </h3>
+
+    <pdf-test></pdf-test>
   </div>
+  
 </template>
 <script>
+import pdfTest from "../components/pdfTedt.vue"
+
 export default {
+  components: {
+    pdfTest,
+  },
   data() {
     return {
-      currentPage: 0,
-      pageCount: 0,
-      time: '00:00:00',
-      oldtime: '',
-      restTime:'',
+      endTime: '',
+      now: '',
+      remainingTime: '',
     }
   },
   created() {
     setInterval(() => {
-      this.oldTime = this.$moment('2021-02-05 00:00:00', 'YYYY-MM-DD HH:mm:ss').format('YYYY-MM-DD HH:mm:ss');
-      this.time = this.$moment().format('YYYY-MM-DD HH:mm:ss');
-      var diff = this.$moment().diff(this.oldTime, 'seconds');
-      diff = diff * -1;
-      var day = Math.floor(diff/(24*3600));
-      diff = diff%(24*3600);
-      var hour = Math.floor(diff/3600);
-      diff = diff%(3600);
-      var min = Math.floor(diff/60);
-      var sec = diff % 60;
+      this.endTime = this.$moment('2021-02-05 00:00:00', 'YYYY-MM-DD HH:mm:ss');
+      this.now = this.$moment();
+      this.timediff = this.$moment.duration(this.endTime.diff(this.now));
+      this.timediff = {
+        days: this.timediff.days() > 0 ? `${this.timediff.days()}일 `: '',
+        hours: this.timediff.hours() > 0 ? `${this.timediff.hours()}시간 `: '',
+        minutes: this.timediff.minutes() > 0 ? `${this.timediff.minutes()}분 `: '',
+        seconds: this.timediff.seconds() > 0 ? `${this.timediff.seconds() + 1}초`: ''
+      }
 
-      this.restTime = day + "일" + hour + "시간" + min + "분" + sec + "초 전"
+      this.endTime = this.endTime.format('YYYY-MM-DD HH:mm:ss');
+      this.now = this.now.format('YYYY-MM-DD HH:mm:ss');
+      this.remainingTime = this.timediff.days;
+      this.remainingTime += this.timediff.hours;
+      this.remainingTime += this.timediff.minutes;
+      this.remainingTime += this.timediff.seconds;
     }, 1000)
   },
 }
