@@ -16,18 +16,22 @@
     <h3 style="text-align: center">
       {{ this.remainingTime }}
     </h3>
-
-    <pdf-test></pdf-test>
+    <a href="details/1-1.pdf" target="_blank" style="color:white;">
+      <b-button style="margin:5px">
+        1-1
+      </b-button>
+    </a>
+    
+    <a href="details/1-2.pdf" target="_blank" style="color:white;">
+      <b-button style="margin:5px">
+        1-2
+      </b-button>
+    </a>
   </div>
   
 </template>
 <script>
-import pdfTest from "../components/pdfTedt.vue"
-
 export default {
-  components: {
-    pdfTest,
-  },
   data() {
     return {
       endTime: '',
