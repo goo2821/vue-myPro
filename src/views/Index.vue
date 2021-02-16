@@ -27,6 +27,14 @@
         1-2
       </b-button>
     </a>
+
+    <div>
+      <b-button id="show-btn" @click="$bvModal.show('bv-modal-example')">모바일이 안열려 ㅠㅠ</b-button>
+
+      <b-modal id="bv-modal-example" hide-footer>
+        <object class="PDFdoc" width="100%" height="500px" type="application/pdf" data="details/1-1.pdf"></object>
+      </b-modal>
+    </div>
   </div>
   
 </template>
